@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:8080/api',
+  baseURL: 'https://event-manager-backend-icw9.onrender.com/api',
 });
 
 // Use an interceptor to add the auth token

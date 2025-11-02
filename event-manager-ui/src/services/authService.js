@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // This is your Spring Boot backend's public auth URL
-const AUTH_API_URL = 'http://localhost:8080/auth';
+const AUTH_API_URL = 'https://event-manager-backend-icw9.onrender.com/auth';
 
 const authService = {
   /**
