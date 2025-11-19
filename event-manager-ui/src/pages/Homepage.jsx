@@ -24,22 +24,27 @@ const Homepage = () => {
     fetchEvents();
   }, []);
 
-  if (loading) {
-    return <div>Loading events...</div>;
-  }
-
-  if (error) {
-    return <div className="error-message">{error}</div>;
-  }
+  if (loading) return <div style={{textAlign:'center', padding:'50px'}}>Loading awesome events...</div>;
+  if (error) return <div className="error-message">{error}</div>;
 
   return (
     <div>
-      <h2>Upcoming Events</h2>
+      {/* --- NEW HERO SECTION --- */}
+      <div className="hero-section">
+        <h1 className="hero-title">Discover Local Events</h1>
+        <p className="hero-subtitle">Join the community, learn something new, or just have fun.</p>
+      </div>
+
+      <h2 style={{marginBottom: '30px'}}>Upcoming Events</h2>
+      
       <div className="event-grid">
         {events.length > 0 ? (
           events.map((event) => <EventCard key={event.id} event={event} />)
         ) : (
-          <p>No events found.</p>
+          <div style={{textAlign:'center', width:'100%'}}>
+            <h3>No events found right now.</h3>
+            <p>Check back later!</p>
+          </div>
         )}
       </div>
     </div>

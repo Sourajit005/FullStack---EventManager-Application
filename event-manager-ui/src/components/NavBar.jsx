@@ -13,27 +13,29 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
+      {/* Brand Logo on the left */}
       <div className="nav-links-left">
-        <Link to="/">Home</Link>
-        {user && (
-          <Link to="/my-tickets">My Tickets</Link>
-        )}
+        <Link to="/" className="navbar-brand">✨ EventManager</Link>
+        
+        {/* Only show these links if logged in */}
+        {user && <Link to="/my-tickets">My Tickets</Link>}
         {user && user.role === 'ROLE_ORGANIZER' && (
-          <Link to="/dashboard">My Dashboard</Link>
+          <Link to="/dashboard">Dashboard</Link>
         )}
       </div>
+
       <div className="nav-links-right">
         {user ? (
           <>
-            <span>
-              Hello, {user.username} ({user.role.replace('ROLE_', '')})
-            </span>
-            <button onClick={handleLogout}>Logout</button>
+            <span style={{fontWeight: '600'}}>Hi, {user.username}</span>
+            <button onClick={handleLogout} className="btn-logout">Logout</button>
           </>
         ) : (
           <>
             <Link to="/login">Login</Link>
-            <Link to="/register">Register</Link>
+            <Link to="/register">
+              <button style={{padding: '8px 20px', fontSize: '14px'}}>Get Started</button>
+            </Link>
           </>
         )}
       </div>

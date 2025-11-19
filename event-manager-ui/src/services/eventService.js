@@ -3,7 +3,8 @@ import axios from 'axios';
 // Create an 'api' instance of axios
 // All requests will go to this base URL
 const api = axios.create({
-  baseURL: 'https://event-manager-backend-icw9.onrender.com/api', // Your Spring Boot backend URL
+  baseURL: 'http://localhost:8080/api',
+  //baseURL: 'https://event-manager-backend-icw9.onrender.com/api', // Your Spring Boot backend URL
 });
 
 // --- THIS IS THE NEW PART ---

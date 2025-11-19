@@ -108,6 +108,11 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
 
+        // ... in SecurityConfig.java
+        configuration.setAllowedOrigins(List.of(
+                "http://localhost:5173",
+                "https://event-manager-frontend.onrender.com" // <-- ADD THIS
+        ));
         // 1. Allow your React app's origin
         // (Vite's default is 5173, Create React App is 3000)
         configuration.setAllowedOrigins(List.of("http://localhost:5173", "http://localhost:3000"));
