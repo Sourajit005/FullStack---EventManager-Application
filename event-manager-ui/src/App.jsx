@@ -17,13 +17,11 @@ function App() {
       <div className="app-container">
         <h1>Event Manager</h1>
         <Routes>
-          {/* Public Routes */}
           <Route path="/" element={<Homepage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/event/:id" element={<EventDetailsPage />} />
           <Route path="/my-tickets" element={<MyTicketsPage />} />
-          {/* --- THIS IS THE MISSING ROUTE --- */}
           <Route
             path="/dashboard"
             element={
@@ -33,8 +31,6 @@ function App() {
             }
           />
           
-          {/* --- THIS IS YOUR CORRECTED ROUTE --- */}
-          {/* You had a duplicate path before */}
           <Route
             path="/dashboard/event/:id"
             element={

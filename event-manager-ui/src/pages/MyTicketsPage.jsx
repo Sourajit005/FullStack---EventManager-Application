@@ -14,12 +14,10 @@ const MyTicketsPage = () => {
         setLoading(true);
         const response = await registrationService.getMyRegistrations();
         
-        // --- THIS IS THE NEW LOGIC ---
         const now = new Date();
         const upcoming = [];
         const past = [];
 
-        // Sort tickets into two lists
         response.data.forEach(reg => {
           if (new Date(reg.eventDate) > now) {
             upcoming.push(reg);
@@ -30,7 +28,6 @@ const MyTicketsPage = () => {
 
         setUpcomingRegistrations(upcoming);
         setPastRegistrations(past);
-        // --- END OF NEW LOGIC ---
         
         setError(null);
       } catch (err) {
@@ -48,7 +45,6 @@ const MyTicketsPage = () => {
 
   return (
     <div>
-      {/* --- Section 1: Upcoming Tickets (with QR) --- */}
       <h2>My Upcoming Tickets</h2>
       {upcomingRegistrations.length > 0 ? (
         <div className="event-grid">
@@ -65,7 +61,6 @@ const MyTicketsPage = () => {
                 <strong>Where:</strong> {reg.eventLocation}
               </p>
               
-              {/* This generates the QR code from your saved text data */}
               <div style={{ background: 'white', padding: '16px', marginTop: '10px', textAlign: 'center' }}>
                 <QRCodeSVG value={reg.qrCodeData} size={200} />
               </div>
@@ -76,7 +71,6 @@ const MyTicketsPage = () => {
         <p>You have not registered for any upcoming events yet.</p>
       )}
 
-      {/* --- Section 2: Past Events (No QR) --- */}
       <hr style={{margin: '40px 0'}} />
       <h2>My Past Events</h2>
       {pastRegistrations.length > 0 ? (

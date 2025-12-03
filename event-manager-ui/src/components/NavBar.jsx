@@ -13,11 +13,8 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      {/* Brand Logo on the left */}
       <div className="nav-links-left">
         <Link to="/" className="navbar-brand">✨ EventManager</Link>
-        
-        {/* Only show these links if logged in */}
         {user && <Link to="/my-tickets">My Tickets</Link>}
         {user && user.role === 'ROLE_ORGANIZER' && (
           <Link to="/dashboard">Dashboard</Link>

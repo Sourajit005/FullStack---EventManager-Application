@@ -9,10 +9,8 @@ import java.util.Optional;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    // Spring Security will use this method to find a user by their username
     Optional<User> findByUsername(String username);
 
-    // We'll also add these for registration validation
     Boolean existsByUsername(String username);
 
     Boolean existsByEmail(String email);

@@ -10,30 +10,21 @@ const RegisterPage = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  /**
-   * This is the updated handleSubmit function
-   */
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
 
     try {
       await authService.register({ username, email, password, role });
-      // On success, go to login page
       navigate('/login');
       
     } catch (err) {
-      // --- THIS IS THE UPDATED CATCH BLOCK ---
       if (err.response && err.response.data && err.response.data.message) {
-        // 1. Check if the backend sent a specific error message
-        // 2. Display that specific message (e.g., "Error: Username is already taken!")
         setError(err.response.data.message);
       } else {
-        // 3. If no specific message (e.g., network error), show a generic one
         setError('Registration failed. Please try again.');
       }
       console.error(err);
-      // --- END OF UPDATE ---
     }
   };
 
@@ -75,7 +66,6 @@ const RegisterPage = () => {
             <option value="ROLE_ORGANIZER">Event Organizer</option>
           </select>
         </div>
-        {/* This <p> will now show the better error message */}
         {error && <p className="error-message">{error}</p>} 
         <button type="submit" className="btn-submit">Register</button>
       </form>

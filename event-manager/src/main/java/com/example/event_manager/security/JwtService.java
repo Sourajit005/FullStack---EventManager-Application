@@ -38,7 +38,6 @@ public class JwtService {
     }
 
     public String generateToken(Map<String, Object> extraClaims, UserDetails userDetails) {
-        // This line adds the user's roles (e.g., "ROLE_USER") to the token
         extraClaims.put("authorities", userDetails.getAuthorities());
         return Jwts.builder()
                 .setClaims(extraClaims)

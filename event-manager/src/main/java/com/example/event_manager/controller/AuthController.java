@@ -26,14 +26,10 @@ public class AuthController {
     @PostMapping("/register")
     public ResponseEntity<?> register(@Valid @RequestBody RegisterRequest request) {
         try {
-            // 1. Try to register the user
             AuthResponse authResponse = authService.register(request);
-            // 2. If it succeeds, return 200 OK
             return ResponseEntity.ok(authResponse);
 
         } catch (RuntimeException e) {
-            // 3. If it fails (e.g., duplicate user), catch the error
-            // 4. Return a 400 Bad Request with the specific error message
             return ResponseEntity
                     .status(HttpStatus.BAD_REQUEST)
                     .body(new MessageResponse(e.getMessage()));
@@ -44,7 +40,6 @@ public class AuthController {
     public ResponseEntity<AuthResponse> login(
             @Valid @RequestBody LoginRequest request
     ) {
-        // Spring Security will handle bad credentials exceptions
         return ResponseEntity.ok(authService.login(request));
     }
 }

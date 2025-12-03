@@ -1,13 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-// Note: We are adding isDashboard, which defaults to false
 const EventCard = ({ event, isDashboard = false }) => {
   const eventDate = new Date(event.eventDate).toLocaleString();
 
-  // --- THIS IS THE NEW LOGIC ---
-  // If we are on the dashboard, link to the organizer's detail page.
-  // Otherwise, link to the public detail page.
   const detailUrl = isDashboard 
     ? `/dashboard/event/${event.id}` 
     : `/event/${event.id}`;
@@ -28,7 +24,7 @@ const EventCard = ({ event, isDashboard = false }) => {
         <em>Organizer: {event.organizer.username}</em>
       </p>
       
-      {/* The 'to' prop now uses our dynamic URL */}
+      
       <Link to={detailUrl} className="btn-details">
         {isDashboard ? 'View Details & Attendees' : 'View Details'}
       </Link>

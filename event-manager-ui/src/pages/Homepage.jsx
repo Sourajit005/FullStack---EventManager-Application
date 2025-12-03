@@ -29,7 +29,6 @@ const Homepage = () => {
 
   return (
     <div>
-      {/* --- NEW HERO SECTION --- */}
       <div className="hero-section">
         <h1 className="hero-title">Discover Local Events</h1>
         <p className="hero-subtitle">Join the community, learn something new, or just have fun.</p>

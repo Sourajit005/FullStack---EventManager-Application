@@ -10,9 +10,7 @@ import java.util.List;
 @Repository
 public interface EventRepository extends JpaRepository<Event, Long> {
 
-    // Custom method to find all events for a specific organizer
     List<Event> findByOrganizer(User organizer);
 
-    // You could also find by organizer ID
     List<Event> findByOrganizerId(Long organizerId);
 }

@@ -16,7 +16,6 @@ public class RegistrationDTO {
     private String qrCodeData;
     private LocalDateTime registrationDate;
 
-    // Event details
     private String eventTitle;
     private String eventLocation;
     private LocalDateTime eventDate;

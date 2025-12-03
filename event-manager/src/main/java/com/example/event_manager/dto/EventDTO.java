@@ -18,5 +18,5 @@ public class EventDTO {
     private String location;
     private LocalDateTime eventDate;
     private int availableSpots;
-    private OrganizerDTO organizer; // We nest the safe DTO here
+    private OrganizerDTO organizer; 
 }

@@ -18,10 +18,9 @@ const tdStyle = {
   border: '1px solid #ddd',
   padding: '12px',
 };
-// --- End Styles ---
 
 const OrganizerEventDetailsPage = () => {
-  const { id } = useParams(); // Get event ID from URL
+  const { id } = useParams();
   const [event, setEvent] = useState(null);
   const [attendees, setAttendees] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -56,7 +55,6 @@ const OrganizerEventDetailsPage = () => {
 
   return (
     <div className="event-details">
-      {/* Event Info Header */}
       <h2>{event.title}</h2>
       <p>
         <strong>When:</strong> {new Date(event.eventDate).toLocaleString()}
@@ -74,14 +72,12 @@ const OrganizerEventDetailsPage = () => {
         <strong>Total Registrations:</strong> {attendees.length}
       </p>
 
-      {/* Attendee List Table */}
       <hr style={{ margin: '30px 0' }} />
       <h3>Attendee List</h3>
       {attendees.length > 0 ? (
         <table style={attendeeTableStyle}>
           <thead>
             <tr>
-              {/* --- THIS IS THE NEW COLUMN --- */}
               <th style={thStyle}>Ticket Number</th>
               <th style={thStyle}>Username</th>
               <th style={thStyle}>Email</th>
@@ -91,7 +87,6 @@ const OrganizerEventDetailsPage = () => {
           <tbody>
             {attendees.map((attendee) => (
               <tr key={attendee.registrationId}>
-                {/* --- THIS IS THE NEW DATA CELL --- */}
                 <td style={tdStyle}>#{attendee.registrationId}</td>
                 <td style={tdStyle}>{attendee.username}</td>
                 <td style={tdStyle}>{attendee.email}</td>

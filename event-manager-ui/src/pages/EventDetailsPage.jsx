@@ -71,9 +71,7 @@ const EventDetailsPage = () => {
       {user && (
     <div>
       <button
-        // --- THIS IS THE CHANGE ---
-        className={isSoldOut ? "" : "btn-register"} // Use new green button class
-        // --- END OF CHANGE ---
+        className={isSoldOut ? "" : "btn-register"} 
         onClick={handleRegister}
         disabled={isSoldOut}
       >

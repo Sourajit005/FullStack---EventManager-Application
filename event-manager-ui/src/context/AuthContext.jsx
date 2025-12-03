@@ -1,36 +1,31 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import authService from '../services/authService';
-import { jwtDecode } from 'jwt-decode'; // We need a library to decode the token
-
-// Run: npm install jwt-decode
+import { jwtDecode } from 'jwt-decode'; 
 
 const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null); // Holds user info { sub, role }
-  const [token, setToken] = useState(localStorage.getItem('token')); // Get token from storage
+  const [user, setUser] = useState(null); 
+  const [token, setToken] = useState(localStorage.getItem('token')); 
 
   useEffect(() => {
-    // When the app loads, check if a token exists in localStorage
     if (token) {
       try {
         const decodedToken = jwtDecode(token);
         
-        // Check if token is expired
         const isExpired = decodedToken.exp * 1000 < Date.now();
         
         if (isExpired) {
-          logout(); // If expired, log out
+          logout(); 
         } else {
-          // If valid, set the user state
           setUser({
-            username: decodedToken.sub, // 'sub' is typically the username
-            role: decodedToken.authorities[0].authority, // Get role from token
+            username: decodedToken.sub, 
+            role: decodedToken.authorities[0].authority, 
           });
         }
       } catch (error) {
         console.error('Invalid token:', error);
-        logout(); // If token is invalid, log out
+        logout();
       }
     }
   }, [token]);
@@ -40,18 +35,18 @@ export const AuthProvider = ({ children }) => {
       const response = await authService.login({ username, password });
       const { token } = response.data;
       
-      localStorage.setItem('token', token); // Save token
-      setToken(token); // Update state
+      localStorage.setItem('token', token); 
+      setToken(token);
       
       const decodedToken = jwtDecode(token);
       setUser({
         username: decodedToken.sub,
         role: decodedToken.authorities[0].authority,
       });
-      return true; // Indicate success
+      return true;
     } catch (error) {
       console.error('Login failed:', error);
-      return false; // Indicate failure
+      return false;
     }
   };
 
@@ -61,7 +56,6 @@ export const AuthProvider = ({ children }) => {
     setToken(null);
   };
   
-  // We pass down the user, login, and logout functions
   const value = {
     user,
     token,
@@ -72,7 +66,6 @@ export const AuthProvider = ({ children }) => {
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
 
-// This is a helper hook to easily access the context
 export const useAuth = () => {
   return useContext(AuthContext);
 };
