@@ -22,7 +22,7 @@ A complete full-stack event management application built with a Java Spring Boot
 ### 1. Backend (event-manager)
 1.  Open the `/event-manager` folder in your preferred Java IDE (like IntelliJ IDEA).
 2.  Open `src/main/resources/application.properties`.
-3.  Update the `spring.datasource.url`, `username`, and `password` to match your local MySQL setup.
+3.  Update the `spring.datasource.url`, `username`, and `password` to match your local PostgreSQL setup.
 4.  Update the `spring.mail` properties with your own email credentials (a Gmail "App Password" is recommended).
 5.  Run the `EventManagerApplication.java` file.
 6.  The backend will be running on `http://localhost:8080`.
