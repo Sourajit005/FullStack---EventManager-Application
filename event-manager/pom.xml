@@ -108,6 +108,10 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>com.microsoft.graph</groupId>-->
+<!--			<artifactId>microsoft-graph</artifactId>-->
+<!--		</dependency>-->
 	</dependencies>
 	<build>
 		<plugins>
