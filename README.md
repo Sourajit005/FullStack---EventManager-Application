@@ -1,4 +1,4 @@
-# Full-Stack Event Manager 🎟️
+# Full-Stack Event Manager 
 
 A complete full-stack event management application built with a Java Spring Boot backend and a React frontend. Users can browse events, and organizers can log in to a dedicated dashboard to create, manage, and track their events.
 
@@ -13,7 +13,7 @@ A complete full-stack event management application built with a Java Spring Boot
 ## Tech Stack
 * **Backend:** Java 21, Spring Boot, Spring Security (JWT), Spring Data JPA
 * **Frontend:** React, React Router, Axios, `qrcode.react`
-* **Database:** MySQL
+* **Database:** PostgreSQL
 
 ---
 
