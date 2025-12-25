@@ -1,7 +1,6 @@
 package com.example.event_manager.domain;
 
 import jakarta.persistence.*;
-import com.example.event_manager.domain.Registration;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -28,21 +27,29 @@ public class Event {
     @Column(nullable = false)
     private String title;
 
-    @Lob
-    @Column(nullable = false)
+    @Column(columnDefinition = "TEXT")
     private String description;
 
     @Column(nullable = false)
     private String location;
 
-    @Column(nullable = false)
-    @Temporal(TemporalType.TIMESTAMP) 
+
+    @Column(name = "start_time", nullable = false)
     private LocalDateTime eventDate;
+
+
+    @Column(name = "end_time")
+    private LocalDateTime endTime;
+
 
     @Column(nullable = false)
     private int availableSpots;
 
-    @ManyToOne(fetch = FetchType.EAGER) 
+
+    @Column(precision = 10, scale = 2)
+    private java.math.BigDecimal price = java.math.BigDecimal.ZERO;
+
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "organizer_id", nullable = false)
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
